@@ -25,6 +25,9 @@ module.exports = {
 					main: "#393938",
 					sub: "#5B6073",
 				},
+				button: {
+					gray: "#F2F2F2",
+				},
 			},
 		},
 	},

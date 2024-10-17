@@ -1,12 +1,12 @@
-import Home from "@/components/Home";
 import OnBoarding from "@/components/OnBoarding/OnBoarding";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Redirect } from "expo-router";
 
 const Loading = () => (
-	<View className="flex-1 justify-center items-center">
+	<View className="flex-1 justify-center items-center bg-white">
 		<ActivityIndicator size={"large"} />
 	</View>
 );
@@ -32,15 +32,13 @@ export default function App() {
 		}
 	};
 
+	if (viewedOnBoarding) {
+		return <Redirect href="./SignIn" />;
+	}
+
 	return (
-		<SafeAreaView className="h-full">
-			{loading ? (
-				<Loading />
-			) : viewedOnBoarding ? (
-				<Home />
-			) : (
-				<OnBoarding />
-			)}
+		<SafeAreaView className="h-full bg-white">
+			{loading ? <Loading /> : <OnBoarding />}
 		</SafeAreaView>
 	);
 }

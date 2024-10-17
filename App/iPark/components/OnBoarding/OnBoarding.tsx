@@ -1,12 +1,5 @@
-import {
-	View,
-	Text,
-	FlatList,
-	Animated,
-	ActivityIndicator,
-} from "react-native";
+import { View, FlatList, Animated } from "react-native";
 import React, { useRef, useState } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
 import { onBoardingScreens } from "@/services/appwrite";
 import OnBoardingItem from "./OnBoardingItem";
 import { IOnBoarding } from "@/interface/IOnBoarding";
@@ -14,6 +7,7 @@ import Paginator from "./Paginator";
 import NextButton from "./NextButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { States } from "@/constants/States";
+import { Redirect, router } from "expo-router";
 
 const OnBoarding = () => {
 	const scrollX = useRef(new Animated.Value(0)).current;
@@ -32,6 +26,7 @@ const OnBoarding = () => {
 		} else {
 			try {
 				await AsyncStorage.setItem(States.viewedOnBoarding, "true");
+				return router.replace("./SignIn");
 			} catch (error) {
 				console.log("Error @setItem: ", error);
 			}
