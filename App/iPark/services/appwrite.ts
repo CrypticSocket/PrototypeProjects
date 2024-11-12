@@ -4,7 +4,7 @@ export const onBoardingScreens: IOnBoarding[] = [
 	{
 		id: 1,
 		icon: "cash-outline",
-		title: "Make Money",
+		title: "Make A Lot Of Money",
 		text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos, nulla nisi, repellat neque",
 	},
 	{
